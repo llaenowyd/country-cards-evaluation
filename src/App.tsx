@@ -1,7 +1,6 @@
 import React from 'react';
+import Countries from './components/Countries';
 
-function App() {
-  return <div>Insert your code here...</div>;
-}
+const App: React.FC = () => <Countries />;
 
 export default App;
