@@ -46,7 +46,7 @@ const makeFilter = (filter: string): FilterFn => {
 
   const regex = new RegExp(trimmedFilter, 'i');
 
-  return crec => !!crec.name.common.match(regex) || !!crec.cca3.match(regex);
+  return (crec) => !!crec.name.common.match(regex) || !!crec.cca3.match(regex);
 };
 
 export const useCountryData = (): UseCountryDataResult => {
@@ -57,7 +57,7 @@ export const useCountryData = (): UseCountryDataResult => {
     const sortFn = sort === 'pop-asc' ? sortByPopAsc : sort === 'pop-desc' ? sortByPopDesc : sortByName;
     const filterFn = makeFilter(filter);
 
-    return (rawData as CountryRecord[]).filter(filterFn).sort(sortFn);
+    return (rawData as unknown as CountryRecord[]).filter(filterFn).sort(sortFn);
   }, [filter, sort]);
 
   return {
@@ -65,6 +65,6 @@ export const useCountryData = (): UseCountryDataResult => {
     filter,
     setFilter,
     setSort,
-    sort
+    sort,
   };
 };

@@ -4,7 +4,9 @@ import Controller from './Controller';
 import Grid from './Grid';
 import { useCountryData } from './useCountryData';
 
-const Container: React.FC = tw.div`flex flex-col max-h-full`;
+const Container: React.FC<{
+  children?: React.ReactNode;
+}> = tw.div`flex flex-col max-h-full`;
 
 const Countries: React.FC = () => {
   const { data, filter, setFilter, setSort, sort } = useCountryData();
